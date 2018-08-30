@@ -1,0 +1,5 @@
+<div [formGroup]="group">
+  <button [type]="config.inputType" mat-raised-button [color]="buttonColor" [disabled]="group.invalid">
+    {{ config.label }}
+  </button>
+</div>
