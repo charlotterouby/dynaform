@@ -1,0 +1,11 @@
+mat-form-field.mat-form-field {
+    display: block;
+  }
+  
+  @media (min-width: 725px) {
+    .mat-form-field {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 50%;
+    }
+  }
