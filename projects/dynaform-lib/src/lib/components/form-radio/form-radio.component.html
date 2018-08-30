@@ -1,0 +1,7 @@
+<div [formGroup]="group">
+	<label [for]="config.name">{{config.label}}</label>
+	<mat-radio-group [formControlName]="config.name">
+		<mat-radio-button *ngFor="let option of config.options" [value]="option.Code">{{option.Libelle}}</mat-radio-button>
+	</mat-radio-group>
+	<mat-error *ngIf="radioControl.invalid && radioControl.touched && config.getMessageError">{{config.getMessageError(radioControl)}}</mat-error>
+</div>

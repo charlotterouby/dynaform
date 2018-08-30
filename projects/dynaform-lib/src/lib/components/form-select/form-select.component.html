@@ -1,0 +1,9 @@
+<mat-form-field [formGroup]="group" [floatLabel]="statusFloatingLabel">
+  <mat-label>{{ config.label }}</mat-label>
+  <mat-select [placeholder]="config.placeholder" [formControlName]="config.name">
+    <mat-option *ngFor="let option of config.options" [value]="option.Code">
+      {{ option.Libelle }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="selectControl.invalid && selectControl.touched && config.getMessageError">{{config.getMessageError(selectControl)}}</mat-error>
+</mat-form-field>
