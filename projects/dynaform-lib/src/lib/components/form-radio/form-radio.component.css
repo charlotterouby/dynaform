@@ -1,2 +1,26 @@
+mat-radio-group {
+	display: flex;
+	flex-direction: column;
+}
 
+mat-radio-button {
+	margin-bottom: 1rem;
+}
 
+.field-group {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "label question";
+}
+
+.field-group label {
+	grid-area: label;
+	text-align: right;
+	margin-right: 0.5rem;
+}
+
+.field-group .question {
+	grid-area: question;
+	justify-self: start;
+	margin-left: 0.5rem;
+}
