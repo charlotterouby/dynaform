@@ -8,19 +8,39 @@ mat-radio-button {
 }
 
 .field-group {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-areas: "label question";
+	display: flex;
+	flex-direction: column;
+}
+.field-group label, .field-group .question {
+	text-align: left;
 }
 
-.field-group label {
-	grid-area: label;
-	text-align: right;
-	margin-right: 0.5rem;
+@media (max-width: 725px){
+
+	.field-group label {
+		margin-bottom: 0.5rem;
+	}
 }
 
-.field-group .question {
-	grid-area: question;
-	justify-self: start;
-	margin-left: 0.5rem;
+@media (min-width: 725px) {
+	.field-group {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas: "label question";
+		max-width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.field-group label {
+		grid-area: label;
+		text-align: right;
+		margin-right: 0.5rem;
+	}
+	
+	.field-group .question {
+		grid-area: question;
+		justify-self: start;
+		margin-left: 0.5rem;
+	}
 }
+

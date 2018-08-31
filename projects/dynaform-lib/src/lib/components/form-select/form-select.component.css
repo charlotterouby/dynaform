@@ -1,0 +1,10 @@
+.mat-form-field.mat-form-field-type-mat-select {
+    display: block;
+}
+@media (min-width: 725px) {
+	.mat-form-field.mat-form-field-type-mat-select {
+		max-width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
