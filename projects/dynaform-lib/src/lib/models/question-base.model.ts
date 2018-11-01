@@ -1,4 +1,4 @@
-import { ValidatorFn, AsyncValidatorFn } from "@angular/forms";
+import { ValidatorFn, AsyncValidatorFn } from '@angular/forms';
 
 export class QuestionBase<T> {
 	value: T;
@@ -12,18 +12,20 @@ export class QuestionBase<T> {
 	inputType: string;
 	getMessageError: Function | null;
 
-	constructor(options: {
-		value?: T,
-		name?: string,
-		label?: string,
-		placeholder?: string,
-		order?: number,
-		controlType?: string,
-		validators?: ValidatorFn | Array<ValidatorFn>,
-		asyncValidators?: AsyncValidatorFn | Array<AsyncValidatorFn>,
-		inputType?: string,
-		getMessageError?: Function
-	} = {}) {
+	constructor(
+		options: {
+			value?: T;
+			name?: string;
+			label?: string;
+			placeholder?: string;
+			order?: number;
+			controlType?: string;
+			validators?: ValidatorFn | Array<ValidatorFn>;
+			asyncValidators?: AsyncValidatorFn | Array<AsyncValidatorFn>;
+			inputType?: string;
+			getMessageError?: Function;
+		} = {}
+	) {
 		this.value = options.value;
 		this.name = options.name || '';
 		this.label = options.label || '';
@@ -33,7 +35,8 @@ export class QuestionBase<T> {
 		this.validators = options.validators || null;
 		this.asyncValidators = options.asyncValidators || null;
 		this.inputType = options.inputType || '';
-		this.getMessageError = options.getMessageError || this.defaultGetMessageError;
+		this.getMessageError =
+			options.getMessageError || this.defaultGetMessageError;
 	}
 
 	defaultGetMessageError(fieldCtrl) {

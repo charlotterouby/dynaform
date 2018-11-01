@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
-import { FormControl,  FormGroup, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, AbstractControl } from '@angular/forms';
 import { QuestionBase } from '../models/question-base.model';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DynamicFormService {
-
-	constructor() { }
+	constructor() {}
 
 	toFormGroup(questions: Array<QuestionBase<any>>) {
 		const group: any = {};
 
-		questions.forEach(question => {
+		questions.forEach((question) => {
 			if (question.controlType !== 'button') {
-				group[question.name] = new FormControl(question.value, question.validators, question.asyncValidators);
+				group[question.name] = new FormControl(
+					question.value,
+					question.validators,
+					question.asyncValidators
+				);
 			}
 		});
 		return new FormGroup(group);

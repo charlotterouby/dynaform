@@ -1,4 +1,10 @@
-import { Directive, Input, ComponentFactoryResolver, ViewContainerRef, OnInit } from '@angular/core';
+import {
+	Directive,
+	Input,
+	ComponentFactoryResolver,
+	ViewContainerRef,
+	OnInit
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { FormButtonComponent } from '../../components/form-button/form-button.component';
@@ -11,9 +17,8 @@ const components = {
 	input: FormInputComponent,
 	select: FormSelectComponent,
 	radio: FormRadioComponent,
-	button: FormButtonComponent,
+	button: FormButtonComponent
 };
-
 
 @Directive({
 	selector: '[dflDynamicField]'
@@ -24,7 +29,10 @@ export class DynamicFieldDirective implements OnInit {
 
 	component;
 
-	constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) { }
+	constructor(
+		private resolver: ComponentFactoryResolver,
+		private container: ViewContainerRef
+	) {}
 
 	ngOnInit() {
 		const component = components[this.config.controlType];
@@ -33,5 +41,4 @@ export class DynamicFieldDirective implements OnInit {
 		this.component.instance.config = this.config;
 		this.component.instance.group = this.group;
 	}
-
 }

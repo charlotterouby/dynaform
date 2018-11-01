@@ -45,8 +45,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		FormSelectComponent,
 		FormRadioComponent
 	],
-	exports: [
-		DynamicFormComponent
-	]
+	exports: [ DynamicFormComponent ]
 })
 export class DynaformLibModule {}
