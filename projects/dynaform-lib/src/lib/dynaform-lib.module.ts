@@ -17,17 +17,20 @@ import { FormSelectComponent } from './components/form-select/form-select.compon
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormRadioComponent } from './components/form-radio/form-radio.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
 
 @NgModule({
 	imports: [
+		// modules angular
 		CommonModule,
+		BrowserAnimationsModule,
 		ReactiveFormsModule,
+		// modules material
 		MatButtonModule,
 		MatFormFieldModule,
 		MatSelectModule,
 		MatInputModule,
-		MatRadioModule,
-		BrowserAnimationsModule
+		MatRadioModule
 	],
 	declarations: [
 		// containers
@@ -37,13 +40,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		FormInputComponent,
 		FormSelectComponent,
 		FormButtonComponent,
-		FormRadioComponent
+		FormRadioComponent,
+		FormTextareaComponent
 	],
 	entryComponents: [
-		FormButtonComponent,
 		FormInputComponent,
 		FormSelectComponent,
-		FormRadioComponent
+		FormButtonComponent,
+		FormRadioComponent,
+		FormTextareaComponent
 	],
 	exports: [ DynamicFormComponent ]
 })

@@ -5,6 +5,7 @@ import { QuestionBase } from '../models/question-base.model';
 import { QuestionInput } from '../models/question-input.model';
 import { Validators } from '@angular/forms';
 import { FormButton } from '../models/form-button.model';
+import { QuestionTextarea } from '../models/question-textarea.model';
 
 describe('DynamicFormService', () => {
 	beforeEach(() => {
@@ -202,6 +203,38 @@ describe('DynamicFormService', () => {
 				expect(inputCtrl.getError('numbersOnly')).toBe(
 					test.expectedResult,
 					`Le test de validation du pattern numbersOnly sur "${test.value}" a échoué.`
+				);
+			});
+		})
+	);
+	it(
+		'should valid textarea Pattern',
+		inject([ DynamicFormService ], (service: DynamicFormService) => {
+			const questions: QuestionBase<any>[] = [
+				new QuestionTextarea({
+					name: 'myText',
+					label: 'question libre'
+				})
+			];
+			const form = service.toFormGroup(questions);
+			const inputCtrl = form.get('myText');
+
+			const stringsToTest = [
+				{
+					value: 'Marie-Thérèse \r Charlotte \r charlotte.rouby@it-ce.fr \r 06.21.65.77.27',
+					expectedResult: false
+				},
+				{
+					value: 'Marie-Thérèse \r <div>contenu dangereux</div> \r Charlotte \r charlotte.rouby@it-ce.fr \r 06.21.65.77.27',
+					expectedResult: true
+				}
+			];
+
+			stringsToTest.forEach((test) => {
+				inputCtrl.setValue(test.value);
+				expect(inputCtrl.getError('textInvalid')).toBe(
+					test.expectedResult,
+					`Le test de validation du pattern textarea sur "${test.value}" a échoué.`
 				);
 			});
 		})
