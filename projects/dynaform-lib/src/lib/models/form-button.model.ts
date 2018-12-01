@@ -1,11 +1,12 @@
-import { QuestionBase } from './question-base.model';
+import { QuestionBase } from "./question-base.model";
+import { OptionsDefinition } from "../interfaces/questions.interface";
 
 export class FormButton extends QuestionBase<string> {
-	controlType = 'button';
-	inputType: string;
+  controlType = "button";
+  inputType: string;
 
-	constructor(options: {} = {}) {
-		super(options);
-		this.inputType = options['inputType'] || 'button';
-	}
+  constructor(options: OptionsDefinition = {}) {
+	super(options);
+	this.inputType = options["inputType"] || "button";
+  }
 }
