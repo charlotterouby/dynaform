@@ -1,33 +1,37 @@
-import { ValidatorFn, AsyncValidatorFn } from "@angular/forms";
+import { FormControl } from "@angular/forms";
 import { OptionsDefinition } from "../interfaces/questions.interface";
 
-export class QuestionBase<T> {
-  value: T;
-  name: string;
-  label: string;
-  placeholder: string;
-  order: number;
+export class QuestionBase<T> implements OptionsDefinition {
+  childrenFields: QuestionBase<any>[] | null;
   controlType: string;
-  validators: ValidatorFn | Array<ValidatorFn> | null;
-  asyncValidators: AsyncValidatorFn | Array<AsyncValidatorFn> | null;
-  inputType: string;
   getMessageError: Function | null;
+  inputType: string;
+  label: string;
+  maxLength: number | null;
+  minLength: number | null;
+  name: string;
+  order: number;
+  placeholder: string;
+  validators: string[] | null;
+  value: T;
 
   constructor(options: OptionsDefinition = {}) {
-	this.value = options.value;
-	this.name = options.name || "";
-	this.label = options.label || "";
-	this.placeholder = options.placeholder || undefined;
-	this.order = options.order === undefined ? 1 : options.order;
+	this.childrenFields = options.childrenFields || [];
 	this.controlType = options.controlType || "";
-	this.validators = options.validators || null;
-	this.asyncValidators = options.asyncValidators || null;
-	this.inputType = options.inputType || "";
 	this.getMessageError =
-		options.getMessageError || this.defaultGetMessageError;
+		options.getMessageError || this.getDefaultMessageError;
+	this.inputType = options.inputType || "";
+	this.label = options.label || "";
+	this.maxLength = options.maxLength || null;
+	this.minLength = options.minLength || null;
+	this.name = options.name || "";
+	this.order = options.order || 1;
+	this.placeholder = options.placeholder || undefined;
+	this.validators = options.validators || null;
+	this.value = options.value;
   }
 
-  defaultGetMessageError(fieldCtrl) {
+  getDefaultMessageError(fieldCtrl: FormControl) {
 	if (fieldCtrl.hasError("required")) {
 		return "Information requise";
 	}
