@@ -9,7 +9,7 @@
     </mat-radio-group>
 
     <mat-error *ngIf="radioControl.invalid && radioControl.touched && config.getMessageError">
-      {{ config.getMessageError(radioControl) }}
+      {{ messageError }}
     </mat-error>
   </div>
 </section>

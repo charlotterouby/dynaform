@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
+import { CustomValidationService } from "../../services/custom-validation.service";
 
 @Component({
   selector: "dfl-form-select",
@@ -10,13 +11,21 @@ export class FormSelectComponent {
   config;
   group: FormGroup;
 
-  constructor() {}
+  constructor(private customValidationService: CustomValidationService) {}
 
-  get selectControl() {
-	return this.group.get(this.config.name) as FormControl;
+  get selectControl(): FormControl {
+	  return this.group.get(this.config.name) as FormControl;
   }
 
-  get statusFloatingLabel() {
-	return this.config.placeholder ? "always" : "auto";
+  get statusFloatingLabel(): string {
+	  return this.config.placeholder ? "always" : "auto";
+  }
+
+  get messageError(): string {
+  	const listErrors = Object.keys(this.selectControl.errors);
+  	return this.customValidationService.getMessageError(
+  		this.config.validators,
+  		listErrors[0]
+  	);
   }
 }

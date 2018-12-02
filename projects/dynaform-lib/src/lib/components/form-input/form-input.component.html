@@ -7,7 +7,7 @@
     [formControlName]="config.name"
     autocomplete="off"
   />
-  <mat-error *ngIf="inputControl.invalid && inputControl.touched && config.getMessageError">{{
-    config.getMessageError(inputControl)
-  }}</mat-error>
+  <mat-error *ngIf="inputControl.invalid && inputControl.touched">
+    {{ messageError }}
+  </mat-error>
 </mat-form-field>

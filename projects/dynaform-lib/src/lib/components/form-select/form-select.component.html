@@ -6,6 +6,6 @@
     </mat-option>
   </mat-select>
   <mat-error *ngIf="selectControl.invalid && selectControl.touched && config.getMessageError">
-    {{ config.getMessageError(selectControl) }}
+    {{ messageError }}
   </mat-error>
 </mat-form-field>

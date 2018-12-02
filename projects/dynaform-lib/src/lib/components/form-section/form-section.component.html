@@ -1,11 +1,9 @@
 <section [formGroup]="group">
   <fieldset [formGroupName]="config.name">
     <legend>{{ config.label }}</legend>
-    <ng-container
-      *ngFor="let childField of config.childrenFields"
-      dflDynamicField
-      [config]="childField"
-      [group]="sectionFormGroup"
-    ></ng-container>
+    <ng-container *ngFor="let childField of config.childrenFields" dflDynamicField [config]="childField" [group]="sectionFormGroup"></ng-container>
   </fieldset>
+  <mat-error *ngIf="sectionFormGroup.invalid && sectionFormGroup.touched">
+    {{ messageError }}
+  </mat-error>
 </section>

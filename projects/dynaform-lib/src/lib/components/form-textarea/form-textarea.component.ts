@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
+import { CustomValidationService } from "../../services/custom-validation.service";
 
 @Component({
   selector: "dfl-form-textarea",
@@ -10,9 +11,16 @@ export class FormTextareaComponent {
   config;
   group: FormGroup;
 
-  constructor() {}
+  constructor(private customValidationService: CustomValidationService) {}
 
-  get inputControl() {
+  get inputControl(): FormControl {
 	return this.group.get(this.config.name) as FormControl;
+  }
+  get messageError(): string {
+  	const listErrors = Object.keys(this.inputControl.errors);
+  	return this.customValidationService.getMessageError(
+  		this.config.validators,
+  		listErrors[0]
+  	);
   }
 }
