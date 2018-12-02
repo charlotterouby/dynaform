@@ -1,24 +1,22 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
-	selector: 'dfl-form-select',
-	templateUrl: './form-select.component.html',
-	styleUrls: ['./form-select.component.css']
+  selector: "dfl-form-select",
+  templateUrl: "./form-select.component.html",
+  styleUrls: ["./form-select.component.css"]
 })
 export class FormSelectComponent {
+  config;
+  group: FormGroup;
 
-	config;
-	group: FormGroup;
+  constructor() {}
 
-	constructor() { }
+  get selectControl() {
+	return this.group.get(this.config.name) as FormControl;
+  }
 
-	get selectControl() {
-		return this.group.get(this.config.name) as FormControl;
-	}
-
-	get statusFloatingLabel() {
-		return this.config.placeholder ? 'always' : 'auto';
-	}
-
+  get statusFloatingLabel() {
+	return this.config.placeholder ? "always" : "auto";
+  }
 }

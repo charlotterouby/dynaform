@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
-	selector: 'dfl-form-input',
-	styleUrls: ['./form-input.component.css'],
-	templateUrl: './form-input.component.html'
+  selector: "dfl-form-input",
+  styleUrls: ["./form-input.component.css"],
+  templateUrl: "./form-input.component.html"
 })
 export class FormInputComponent {
-	config;
-	group: FormGroup;
+  config;
+  group: FormGroup;
 
-	constructor() { }
+  constructor() {}
 
-	get inputControl () {
-		return this.group.get(this.config.name) as FormControl;
-	}
-
+  get inputControl() {
+	return this.group.get(this.config.name) as FormControl;
+  }
 }

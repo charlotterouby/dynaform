@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 
 @Component({
-	selector: 'dfl-form-section',
-	templateUrl: './form-section.component.html',
-	styleUrls: [ './form-section.component.css' ]
+  selector: "dfl-form-section",
+  templateUrl: "./form-section.component.html",
+  styleUrls: ["./form-section.component.css"]
 })
 export class FormSectionComponent {
-
   config;
-	group: FormGroup;
+  group: FormGroup;
 
-	constructor() {}
+  constructor() {}
 
-	get sectionFormGroup () {
-		return this.group.get(this.config.name) as FormGroup;
-	}
+  get sectionFormGroup() {
+	return this.group.get(this.config.name) as FormGroup;
+  }
 }

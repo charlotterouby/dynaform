@@ -1,26 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FormSectionComponent } from './form-section.component';
+import { FormSectionComponent } from "./form-section.component";
 
-describe('FormSectionComponent', () => {
-	let component: FormSectionComponent;
-	let fixture: ComponentFixture<FormSectionComponent>;
+describe("FormSectionComponent", () => {
+  let component: FormSectionComponent;
+  let fixture: ComponentFixture<FormSectionComponent>;
 
-	beforeEach(
-		async(() => {
-			TestBed.configureTestingModule({
-				declarations: [ FormSectionComponent ]
-			}).compileComponents();
-		})
-	);
+  beforeEach(async(() => {
+	TestBed.configureTestingModule({
+		declarations: [FormSectionComponent]
+	}).compileComponents();
+  }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(FormSectionComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+  beforeEach(() => {
+	fixture = TestBed.createComponent(FormSectionComponent);
+	component = fixture.componentInstance;
+	fixture.detectChanges();
+  });
 
-	it('should create', () => {
-		expect(component).toBeTruthy();
-	});
+  it("should create", () => {
+	expect(component).toBeTruthy();
+  });
 });
