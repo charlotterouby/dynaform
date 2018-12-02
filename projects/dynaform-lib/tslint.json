@@ -2,8 +2,6 @@
   "extends": "../../tslint.json",
   "rules": {
     "directive-selector": [true, "attribute", "dfl", "camelCase"],
-    "component-selector": [true, "element", "dfl", "kebab-case"],
-    "indent": [true, "tabs", 4],
-    "quotemark": false
+    "component-selector": [true, "element", "dfl", "kebab-case"]
   }
 }

@@ -12,7 +12,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project "dynaform-lib-app" wich serve as a harness test for the librairy "dynaform-lib". The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+Run `ng build dynaform-lib` to build the librairy "dynaform-lib". This builds our librairy to the folder `dist/dynaform-build`. Beginning with version 6.1, Angular always does a production build of our library.
 
 ## Running unit tests
 
