@@ -1,12 +1,22 @@
-import { QuestionBase } from "./question-base.model";
-import { OptionsDefinition } from "../interfaces/questions.interface";
+import {
+  ConfigSectionForm,
+  ConfigValidator,
+  MinimumConfigForm
+} from "../interfaces/questions.interface";
 
-export class FormSection extends QuestionBase<any> {
+export class FormSection implements ConfigSectionForm {
   controlType = "section";
-  /** @required */
-  childrenFields: QuestionBase<any>[];
+  order: number;
+  childrenFields: MinimumConfigForm[];
+  label: string;
+  name: string;
+  validators: ConfigValidator[];
 
-  constructor(options: OptionsDefinition = {}) {
-	super(options);
+  constructor(options: ConfigSectionForm) {
+  	this.order = options.order;
+  	this.childrenFields = options.childrenFields;
+  	this.label = options.label;
+  	this.name = options.name;
+  	this.validators = options.validators || [];
   }
 }

@@ -13,7 +13,7 @@ import { FormRadioComponent } from "../../components/form-radio/form-radio.compo
 import { FormSectionComponent } from "../../components/form-section/form-section.component";
 import { FormSelectComponent } from "../../components/form-select/form-select.component";
 import { FormTextareaComponent } from "../../components/form-textarea/form-textarea.component";
-import { QuestionBase } from "../../models/question-base.model";
+import { FullConfigOptions } from "../../interfaces/questions.interface";
 
 const components = {
   input: FormInputComponent,
@@ -28,21 +28,18 @@ const components = {
   selector: "[dflDynamicField]"
 })
 export class DynamicFieldDirective implements OnInit {
-  @Input() config: QuestionBase<any>;
+  @Input() config: FullConfigOptions;
   @Input() group: FormGroup;
 
   component;
 
-  constructor(
-	private resolver: ComponentFactoryResolver,
-	private container: ViewContainerRef
-  ) {}
+  constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) { }
 
   ngOnInit() {
-	const component = components[this.config.controlType];
-	const factory = this.resolver.resolveComponentFactory<any>(component);
-	this.component = this.container.createComponent(factory);
-	this.component.instance.config = this.config;
-	this.component.instance.group = this.group;
+  	const component = components[this.config.controlType];
+  	const factory = this.resolver.resolveComponentFactory<any>(component);
+  	this.component = this.container.createComponent(factory);
+  	this.component.instance.config = this.config;
+  	this.component.instance.group = this.group;
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { QuestionService } from "./services/question.service";
-import { QuestionBase } from "dynaform-lib";
+import { FullConfigOptions } from "dynaform-lib";
 
 @Component({
   selector: "app-root",
@@ -9,7 +9,7 @@ import { QuestionBase } from "dynaform-lib";
 })
 export class AppComponent {
   title = "dynaform-lib-app";
-  configForm: QuestionBase<any>[] = [];
+  configForm: FullConfigOptions[] = [];
 
   constructor(private questionService: QuestionService) {
 	this.configForm = this.questionService.getQuestionsFoodForm();

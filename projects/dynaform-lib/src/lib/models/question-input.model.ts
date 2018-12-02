@@ -1,12 +1,25 @@
-import { QuestionBase } from "./question-base.model";
-import { OptionsDefinition } from "../interfaces/questions.interface";
+import {
+  ConfigInputForm,
+  ConfigValidator
+} from "../interfaces/questions.interface";
 
-export class QuestionInput extends QuestionBase<string> {
+export class QuestionInput implements ConfigInputForm {
   controlType = "input";
+  order: number;
+  label: string;
+  name: string;
+  value: any;
+  validators: ConfigValidator[];
   inputType: string;
+  placeholder: string;
 
-  constructor(options: OptionsDefinition = {}) {
-	super(options);
-	this.inputType = options["inputType"] || "text";
+  constructor(options: ConfigInputForm) {
+  	this.order = options.order;
+  	this.label = options.label;
+  	this.name = options.name;
+  	this.value = options.value;
+  	this.validators = options.validators || [];
+  	this.inputType = options.inputType || "text";
+  	this.placeholder = options.placeholder;
   }
 }

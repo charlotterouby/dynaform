@@ -1,10 +1,9 @@
 /*
  * Public API Surface of dynaform-lib
  */
-
+export * from "./lib/interfaces/questions.interface";
 export * from "./lib/models/form-button.model";
 export * from "./lib/models/form-section.model";
-export * from "./lib/models/question-base.model";
 export * from "./lib/models/question-input.model";
 export * from "./lib/models/question-radio.model";
 export * from "./lib/models/question-select.model";

@@ -1,15 +1,26 @@
-import { QuestionBase } from "./question-base.model";
 import {
-  OptionsDefinition,
-  OptionsSelect
+  ConfigSelectField,
+  OptionsSelect,
+  ConfigValidator
 } from "../interfaces/questions.interface";
 
-export class QuestionSelect extends QuestionBase<string> {
+export class QuestionSelect implements ConfigSelectField {
   controlType = "select";
-  optionsSelect: OptionsSelect[] = [];
+  order: number;
+  label: string;
+  name: string;
+  value: any;
+  validators: ConfigValidator[];
+  placeholder: string;
+  optionsSelect: OptionsSelect[];
 
-  constructor(options: OptionsDefinition = {}) {
-	super(options);
-	this.optionsSelect = options["optionsSelect"] || [];
+  constructor(options: ConfigSelectField) {
+  	this.order = options.order;
+  	this.label = options.label;
+  	this.name = options.name;
+  	this.value = options.value;
+  	this.validators = options.validators || [];
+  	this.placeholder = options.placeholder;
+  	this.optionsSelect = options.optionsSelect;
   }
 }

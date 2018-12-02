@@ -1,12 +1,16 @@
-import { QuestionBase } from "./question-base.model";
-import { OptionsDefinition } from "../interfaces/questions.interface";
+import { ConfigButtonForm } from "../interfaces/questions.interface";
 
-export class FormButton extends QuestionBase<string> {
+export class FormButton implements ConfigButtonForm {
+  // MinimumConfigForm
   controlType = "button";
+  order: number;
+  // ConfigButtonForm
   inputType: string;
+  label: string;
 
-  constructor(options: OptionsDefinition = {}) {
-	super(options);
-	this.inputType = options["inputType"] || "button";
+  constructor(options: ConfigButtonForm) {
+  	this.inputType = options.inputType || "button";
+  	this.label = options.label || "Enregistrer";
+  	this.order = options.order;
   }
 }

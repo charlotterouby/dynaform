@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
-import { QuestionBase } from "../../models/question-base.model";
+import { FormGroup } from "@angular/forms";
 import { DynamicFormService } from "../../services/dynamic-form.service";
+import { FullConfigOptions } from "../../interfaces/questions.interface";
 
 @Component({
   selector: "dfl-dynamic-form",
@@ -9,18 +9,15 @@ import { DynamicFormService } from "../../services/dynamic-form.service";
   styleUrls: ["./dynamic-form.component.css"]
 })
 export class DynamicFormComponent implements OnInit {
-  @Input() config: QuestionBase<any>[] = [];
+  @Input() config: FullConfigOptions[] = [];
   @Input() form: FormGroup;
   @Output() submitted = new EventEmitter<any>();
 
-  constructor(
-	private fb: FormBuilder,
-	private dynamicFormService: DynamicFormService
-  ) {}
+  constructor(private dynamicFormService: DynamicFormService) {}
 
   ngOnInit() {
-	if (!this.form) {
-		this.form = this.dynamicFormService.createFormGroup(this.config);
-	}
+  	if (!this.form) {
+  		this.form = this.dynamicFormService.createFormGroup(this.config);
+  	}
   }
 }

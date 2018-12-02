@@ -1,23 +1,30 @@
-import { QuestionBase } from "./question-base.model";
-import { OptionsDefinition } from "../interfaces/questions.interface";
-import { FormControl } from "@angular/forms";
+import {
+  ConfigTextarea,
+  ConfigValidator
+} from "../interfaces/questions.interface";
 
-export class QuestionTextarea extends QuestionBase<string> {
+export class QuestionTextarea implements ConfigTextarea {
   controlType = "textarea";
-  inputType: string;
+  order: number;
+  label: string;
+  name: string;
+  value: string | undefined;
+  validators: ConfigValidator[];
+  placeholder: string;
 
-  constructor(options: OptionsDefinition = {}) {
-	super(options);
-	this.inputType = options.inputType || "text";
-	this.validators = ["validTextarea", ...options.validators];
-  }
-
-  getDefaultMessageError(fieldCtrl: FormControl) {
-	if (fieldCtrl.hasError("required")) {
-		return "Information requise";
-	}
-	if (fieldCtrl.hasError("textInvalid")) {
-		return "Saisie incorrecte. Un ou plusieurs caractères non autorisés sont utilisés.";
-	}
+  constructor(options: ConfigTextarea) {
+		this.order = options.order;
+		this.label = options.label;
+		this.name = options.name;
+		this.value = options.value;
+		this.placeholder = options.placeholder;
+		this.validators = [
+			{
+			name: "validTextarea",
+			message:
+				"Saisie incorrecte. Un ou plusieurs caractères non autorisés sont utilisés."
+			},
+			...options.validators
+		];
   }
 }
