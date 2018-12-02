@@ -140,18 +140,31 @@ describe("CustomValidationService", () => {
 	const service: CustomValidationService = TestBed.get(
 		CustomValidationService
 	);
-	const inputCtrl = new FormControl(null, [service.validTextarea]);
+	const inputCtrl = new FormControl("", [service.validTextarea]);
 
 	const stringsToTest = [
 		{
-		value:
-			"Marie-Thérèse \r Charlotte \r charlotte.rouby@it-ce.fr \r 06.21.65.77.27",
-		expectedResult: false
+			value:
+				"Marie-Thérèse \r Charlotte \r charlotte.rouby@it-ce.fr \r 06.21.65.77.27",
+			expectedResult: null
 		},
 		{
-		value:
-			"Marie-Thérèse \r <div>contenu dangereux</div> \r Charlotte \r charlotte.rouby@it-ce.fr \r 06.21.65.77.27",
-		expectedResult: true
+			value: "Marie-Thérèse",
+			expectedResult: null
+		},
+		{
+			value: "Charlotte",
+			expectedResult: null
+		},
+		{
+			value: "<div>contenu dangereux</div>",
+			expectedResult: true
+		},
+		{
+			// text avec des caractères interdits (balises html)
+			value:
+				"Marie-Thérèse \r <div>contenu dangereux</div> \r Charlotte \r charlotte.rouby@it-ce.fr \r 06.21.65.77.27",
+			expectedResult: true
 		}
 	];
 	stringsToTest.forEach(test => {

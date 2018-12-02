@@ -10,31 +10,31 @@ describe("FormInputComponent", () => {
   let component: FormInputComponent;
   let fixture: ComponentFixture<FormInputComponent>;
   const questions: QuestionBase<any>[] = [
-	new QuestionInput({
-		name: "firstName",
-		label: "First name",
-		inputType: "text",
-		order: 1
-	})
+		new QuestionInput({
+			name: "firstName",
+			label: "First name",
+			inputType: "text",
+			order: 1
+		})
   ];
 
   beforeEach(async(() => {
-	TestBed.configureTestingModule({
-		imports: [DynaformLibModule]
-	}).compileComponents();
+		TestBed.configureTestingModule({
+			imports: [DynaformLibModule]
+		}).compileComponents();
   }));
 
   beforeEach(() => {
-	fixture = TestBed.createComponent(FormInputComponent);
-	component = fixture.componentInstance;
-	fixture.componentInstance.config = questions[0];
-	fixture.componentInstance.group = new FormGroup({
-		firstName: new FormControl("")
-	});
-	fixture.detectChanges();
+		fixture = TestBed.createComponent(FormInputComponent);
+		component = fixture.componentInstance;
+		component.config = questions[0];
+		component.group = new FormGroup({
+			firstName: new FormControl("")
+		});
+		fixture.detectChanges();
   });
 
   it("should create", () => {
-	expect(component).toBeTruthy();
+		expect(component).toBeTruthy();
   });
 });
