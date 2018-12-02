@@ -82,12 +82,14 @@ export class CustomValidationService {
 	}
 
 	getValidators(listConfigValidators: ConfigValidator[]): ValidatorFn[] {
-		const listValidatorsFunc = listConfigValidators.map((configValidator) => {
-			if (configValidator.param) {
-				return this.mapValidators[configValidator.name].method(configValidator.param);
-			}
-			return this.mapValidators[configValidator.name].method;
-		});
+		const listValidatorsFunc = listConfigValidators
+			.filter(configValidator => this.mapValidators[configValidator.name])
+			.map(configValidator => {
+				if (configValidator.param) {
+					return this.mapValidators[configValidator.name].method(configValidator.param);
+				}
+				return this.mapValidators[configValidator.name].method;
+			});
 		return listValidatorsFunc;
 	}
 

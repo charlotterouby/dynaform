@@ -20,7 +20,6 @@ describe("FormButtonComponent", () => {
 	component = fixture.componentInstance;
 	fixture.componentInstance.config = new FormButton({
 		label: "Submit",
-		name: "submit",
 		controlType: "button",
 		inputType: "submit",
 		order: 5
