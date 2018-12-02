@@ -1,27 +1,23 @@
-import { QuestionBase } from './question-base.model';
-import { DynamicFormService } from '../services/dynamic-form.service';
-import { OptionsDefinition } from '../interfaces/questions.interface';
+import { QuestionBase } from "./question-base.model";
+import { OptionsDefinition } from "../interfaces/questions.interface";
+import { FormControl } from "@angular/forms";
 
 export class QuestionTextarea extends QuestionBase<string> {
-	controlType = 'input';
-	inputType: string;
-	private dynamicFormService = new DynamicFormService();
+  controlType = "textarea";
+  inputType: string;
 
-	constructor(options: OptionsDefinition = {}) {
-		super(options);
-		this.validators = Array.isArray(options.validators)
-			? [ this.dynamicFormService.validTextarea, ...options.validators ]
-			: options.validators
-				? [ this.dynamicFormService.validTextarea, options.validators ]
-				: [ this.dynamicFormService.validTextarea ];
-	}
+  constructor(options: OptionsDefinition = {}) {
+	super(options);
+	this.inputType = options.inputType || "text";
+	this.validators = ["validTextarea", ...options.validators];
+  }
 
-	defaultGetMessageError(fieldCtrl) {
-		if (fieldCtrl.hasError('required')) {
-			return 'Information requise';
-		}
-		if (fieldCtrl.hasError('textInvalid')) {
-			return 'Saisie incorrecte. Un ou plusieurs caractères non autorisés sont utilisés.';
-		}
+  getDefaultMessageError(fieldCtrl: FormControl) {
+	if (fieldCtrl.hasError("required")) {
+		return "Information requise";
 	}
+	if (fieldCtrl.hasError("textInvalid")) {
+		return "Saisie incorrecte. Un ou plusieurs caractères non autorisés sont utilisés.";
+	}
+  }
 }

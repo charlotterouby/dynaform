@@ -1,9 +1,13 @@
 <section [formGroup]="group" class="field-group">
-	<label [for]="config.name">{{config.label}}</label>
-	<div class="question">
-		<mat-radio-group [formControlName]="config.name">
-			<mat-radio-button *ngFor="let option of config.options" [value]="option.Code">{{option.Libelle}}</mat-radio-button>
-		</mat-radio-group>
-		<mat-error *ngIf="radioControl.invalid && radioControl.touched && config.getMessageError">{{config.getMessageError(radioControl)}}</mat-error>
-	</div>
+  <label [for]="config.name"> {{ config.label }} </label>
+  <div class="question">
+    <mat-radio-group [formControlName]="config.name">
+      <mat-radio-button *ngFor="let option of config.optionsSelect" [value]="option.code">
+        {{ option.libelle }}
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-error *ngIf="radioControl.invalid && radioControl.touched && config.getMessageError">
+      {{ config.getMessageError(radioControl) }}
+    </mat-error>
+  </div>
 </section>

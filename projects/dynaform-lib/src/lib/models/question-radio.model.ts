@@ -1,12 +1,12 @@
 import { QuestionBase } from './question-base.model';
-import { OptionsDefinition } from '../interfaces/questions.interface';
+import { OptionsDefinition, OptionsSelect } from '../interfaces/questions.interface';
 
 export class QuestionRadio extends QuestionBase<string> {
 	controlType = 'radio';
-	options: { key: string; value: string }[] = [];
+	optionsSelect: OptionsSelect[] = [];
 
 	constructor(options: OptionsDefinition = {}) {
 		super(options);
-		this.options = options['options'] || [];
+		this.optionsSelect = options['optionsSelect'] || [];
 	}
 }
